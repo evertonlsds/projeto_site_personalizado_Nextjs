@@ -7,22 +7,29 @@ export function Header() {
   return (
     <header className={styles.headerContainer}>
       <div className={styles.headerContent}>
-        <a>
-          <Image src={logo} alt="logomarca" height={90} width={90} />
-        </a>
+        <ActiveLink href="/" activeClassName={styles.active}>
+          <a>
+            <Image src={logo} alt="logomarca" height={90} width={90} />
+          </a>
+        </ActiveLink>
         <nav>
-            <ActiveLink href='/' activeClassName={styles.active}>
-              <a>Home</a>
-            </ActiveLink>
-            <ActiveLink href='/catalog' activeClassName={styles.active}>
-              <a>Catálagos</a>
-            </ActiveLink>
-            <ActiveLink href='/sobre' activeClassName={styles.active}>
-              <a>Quem somos?</a>
-            </ActiveLink>
-            </nav>
-            <a className={styles.readyButton} type='button' href="https://www.boladaomodas.com.br">Começar</a>
-
+          <ActiveLink href="/" activeClassName={styles.active}>
+            <a>Home</a>
+          </ActiveLink>
+          <ActiveLink href="/catalog" activeClassName={styles.active}>
+            <a>Catálago</a>
+          </ActiveLink>
+          <ActiveLink href="/sobre" activeClassName={styles.active}>
+            <a>Quem somos?</a>
+          </ActiveLink>
+        </nav>
+        <a
+          className={styles.readyButton}
+          type="button"
+          href="https://www.boladaomodas.com.br"
+        >
+          Começar
+        </a>
       </div>
     </header>
   );
