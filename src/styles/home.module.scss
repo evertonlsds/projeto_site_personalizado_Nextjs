@@ -60,6 +60,7 @@
 
     section{
         max-width: 670px;
+        
     }
 
     img{
@@ -81,5 +82,43 @@
         color: var(--white);
 
     }
+}
+
+.nextLevelContent{
+ margin: 6rem auto;
+ max-width: 1120px;
+ display: flex;
+ align-items: flex-start;
+ justify-content: space-between;
+ flex-direction: column;
+
+ h2{
+     font-size: 2.5rem;
+     line-height: 4.5rem;
+     font-weight: 900;
+     color: var(--white);
+
+     span{
+         font-size: 2.8rem;
+         line-height: 4.5rem ;
+         font-weight: 900;
+         color: var(--yellow-500);
+     }
+ }
+
+ span{
+     font-size: 1rem;
+     line-height: 2.25rem;
+    color: var(--white);
+ }
+ button{
+    background-color: var(--yellow-500);
+    border: 0;
+    padding: 1rem 1.8rem;
+    margin-top: 2.5rem;
+    border-radius: 7px;
+    color: var(--gray-700);
+    font-weight: bold;
+ }
 }
 

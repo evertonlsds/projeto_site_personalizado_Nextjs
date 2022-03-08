@@ -1,5 +1,8 @@
 import Head from "next/head";
 import styles from "../styles/home.module.scss";
+import Image from 'next/image'
+
+import techsImage from '../../public/images/marcas.png';
 
 export default function Home() {
   return (
@@ -38,7 +41,7 @@ export default function Home() {
         <hr className={styles.divisor} />
 
         <div className={styles.sectionContent}>
-         <img src="/images/entrega.png" alt="entrega" />
+         <img src="/images/webdev.png" alt="entrega" />
 
           <section>
             <h2>Lorem ipsum dolor sit amet consectetur.</h2>
@@ -49,6 +52,15 @@ export default function Home() {
             </span>
           </section>
           
+        </div>
+
+        <div className={styles.nextLevelContent}>
+        <Image src={techsImage} alt='tecno'/>
+          <h2>Lorem ipsum <span className={styles.alunos}>dolor sit</span> dolor sit amet consectetur adipisicing elit. Architecto, nemo.</h2>
+          <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, aliquid.</span>
+          <a>
+            <button>COMPRAR AGORA!</button>
+          </a>
         </div>
 
       </main>
