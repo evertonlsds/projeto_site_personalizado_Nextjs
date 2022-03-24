@@ -16,7 +16,20 @@ export default function Catalog() {
         <div className={styles.catalog}>
           <Link href="/">
             <a>
-              <Image src={thumbImg} alt="imagem 1" width={720} height={410} quality={100} />
+              <Image
+                src={thumbImg}
+                alt="imagem 1"
+                width={720}
+                height={410}
+                quality={100}
+              />
+              <strong> Lorem ipsum dolor sit amet consectetur.</strong>
+              <time>24 Março 2022</time>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae
+                repellendus id quas modi sapiente eveniet, provident aliquid
+                sunt consectetur voluptate!
+              </p>
             </a>
           </Link>
         </div>
