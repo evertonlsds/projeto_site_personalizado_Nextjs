@@ -1,10 +1,31 @@
+import { GetStaticProps } from "next";
 import Head from "next/head";
 import styles from "../styles/home.module.scss";
-import Image from 'next/image'
+import Image from "next/image";
 
-import techsImage from '../../public/images/marcas.png';
+import techsImage from "../../public/images/marcas.png";
+import { getPrismicClient } from "../services/prismic";
+import Prismic from "@prismicio/client";
+import { RichText } from "prismic-dom";
 
-export default function Home() {
+
+type Content = {
+  title: string;
+    titleContent: string;
+    linkAction: string;
+    tshirtTitle: string;
+    shirtContent: string;
+    shirtBanner: string;
+    titleShirt: string;
+    tshirtContent: string;
+    tshirtBanner: string;
+}
+
+interface contentProps{
+  content: Content;
+}
+
+export default function Home({content}: contentProps) {
   return (
     <>
       <Head>
@@ -41,7 +62,7 @@ export default function Home() {
         <hr className={styles.divisor} />
 
         <div className={styles.sectionContent}>
-         <img src="/images/webdev.png" alt="entrega" />
+          <img src="/images/webdev.png" alt="entrega" />
 
           <section>
             <h2>Lorem ipsum dolor sit amet consectetur.</h2>
@@ -51,19 +72,62 @@ export default function Home() {
               quae?
             </span>
           </section>
-          
         </div>
 
         <div className={styles.nextLevelContent}>
-        <Image src={techsImage} alt='tecno'/>
-          <h2>Lorem ipsum <span className={styles.alunos}>dolor sit</span> dolor sit amet consectetur adipisicing elit. Architecto, nemo.</h2>
-          <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, aliquid.</span>
+          <Image src={techsImage} alt="tecno" />
+          <h2>
+            Lorem ipsum <span className={styles.alunos}>dolor sit</span> dolor
+            sit amet consectetur adipisicing elit. Architecto, nemo.
+          </h2>
+          <span>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione,
+            aliquid.
+          </span>
           <a>
             <button>COMPRAR AGORA!</button>
           </a>
         </div>
-
       </main>
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const prismic = getPrismicClient();
+
+  const response = await prismic.query([
+    Prismic.Predicates.at("document.type", "home"),
+  ]);
+
+  const {
+    title,
+    sub_title,
+    link_action,
+    t_shirt,
+    shirt_content,
+    shirt_banner,
+    title_shirt,
+    tshirt_content,
+    tshirt_banner,
+  } = response.results[0].data;
+
+  const content = {
+    title: RichText.asText(title),
+    titleContent: RichText.asText(sub_title),
+    linkAction: link_action.url,
+    tshirtTitle: RichText.asText(t_shirt),
+    shirtContent: RichText.asText(shirt_content),
+    shirtBanner: shirt_banner.url,
+    titleShirt: RichText.asText(title_shirt),
+    tshirtContent: RichText.asText(tshirt_content),
+    tshirtBanner: tshirt_banner.url,
+  };
+
+  return {
+    props: {
+      content,
+    },
+    revalidate: 60 * 2, //a cada 2 minutos
+  };
+};
