@@ -5,6 +5,12 @@ import Link from "next/link";
 
 import Image from "next/image";
 import thumbImg from "../../../public/images/thumb.png";
+import {
+  FiChevronLeft,
+  FiChevronsLeft,
+  FiChevronsRight,
+  FiChevronRight,
+} from "react-icons/fi";
 
 export default function Catalog() {
   return (
@@ -32,6 +38,25 @@ export default function Catalog() {
               </p>
             </a>
           </Link>
+
+          <div className={styles.buttonNavigate}>
+            <div>
+              <button>
+                <FiChevronsLeft size={25} color="#fff" />
+              </button>
+              <button>
+                <FiChevronLeft size={25} color="#fff" />
+              </button>
+            </div>
+            <div>
+              <button>
+                <FiChevronsRight size={25} color="#fff" />
+              </button>
+              <button>
+                <FiChevronRight size={25} color="#fff" />
+              </button>
+            </div>
+          </div>
         </div>
       </main>
     </>
