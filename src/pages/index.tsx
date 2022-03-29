@@ -34,12 +34,11 @@ export default function Home({content}: contentProps) {
       <main className={styles.container}>
         <div className={styles.containerHeader}>
           <section className={styles.ctaText}>
-            <h1>Lorem ipsum dolor sit amet dolor.</h1>
+            <h1>{content.title}</h1>
             <span>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Assumenda, sapiente! Lorem ipsum, dolor sit amet
+              {content.titleContent}
             </span>
-            <a>
+            <a href={content.linkAction}>
               <button>COMEÇAR AGORA</button>
             </a>
           </section>
